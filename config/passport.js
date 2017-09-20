@@ -48,7 +48,7 @@ passport.use('local.login', new localStrategy({
 	passwordField: 'password',
 	passReqToCallback: true
 },function(req,email,password,done){
-	console.log(email);
+	//console.log(email);
 	User.findOne({'email': email},function(err,user){
 		if(err){
 			return done(err);
@@ -58,13 +58,13 @@ passport.use('local.login', new localStrategy({
 			return done(null, false, req.flash('loginError', 'No user found.'));
 		}
 
-		if(!user.validPassword(req.body.password))
+		if(!user.validPassword(req.body.password)){
 	
 			 return done(null, false, req.flash('passwordError', 'Oops! Wrong password.')); 
-		
+			};
+
 			return done(null,user);
 
-		
-		
+		 
 	})
 }));

@@ -35,7 +35,7 @@ router.get('/login',function(req,res){
 
 	res.render('login',{loginError: login_error,passwordError: password_error});
 });
-router.post('/login',passport.authenticate('local.signup',{
+router.post('/login',passport.authenticate('local.login',{
 	successRedirect: '/profile',
 	failureRedirect: '/login',
 	failureFlash: true
